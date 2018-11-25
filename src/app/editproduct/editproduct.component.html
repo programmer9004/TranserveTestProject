@@ -1,0 +1,63 @@
+
+
+  <div class="row" *ngIf="showLoader==false">
+  	<div class="col-lg-12">
+  		<h1 class="page-header">Edit Product</h1>
+  		
+  		
+  	</div>
+  	<!-- /.col-lg-12 -->
+
+  </div>
+
+  <div class="row" *ngIf="showLoader==false">
+  	<div class="col-sm-8">
+      <div class="label label-danger" *ngIf="form_err!=''">{{form_err}}</div>
+  		<div class="label label-success" *ngIf="form_succ!=''">{{form_succ}}</div>
+  		<form [formGroup]="productForm" (ngSubmit)="update()" novalidate #documentEditForm="ngForm">
+  			<div class="form-group">
+  				<label for="product_name">Product Name:</label>
+  				<input type="product_name" class="form-control" id="product_name" formControlName="product_name"  placeholder="Product Name">
+  				<div class="error" *ngIf="!productForm.controls['product_name'].valid && (productForm.controls['product_name'].dirty || submitted)">
+  					<div class="label label-danger" *ngIf="productForm.controls['product_name'].hasError('required')">
+  						Name is required
+  					</div>
+  					<div class="label label-danger" *ngIf="productForm.controls['product_name'].hasError('minlength')">
+  						Min. 3 charaters
+  					</div>
+  					<div class="label label-danger" *ngIf="productForm.controls['product_name'].hasError('maxlength')">
+  						Must not exceed 30 charaters
+  					</div>
+  				</div>
+  			</div>
+  			<div class="form-group">
+  				<label for="product_price">Product Price:</label>
+  				<input type="text" class="form-control" id="product_price" formControlName="product_price" placeholder="Product Price">
+  				<div class="error" *ngIf="!productForm.controls['product_price'].valid && (productForm.controls['product_price'].dirty || submitted)">
+  					<div class="label label-danger" *ngIf="productForm.controls['product_price'].hasError('pattern')">
+  						Invalid price
+  					</div>
+  					
+  			   </div>
+  		   </div>
+  			<div class="form-group">
+  				<label for="product_description">Product Description:</label>
+  				<input type="text" class="form-control" id="product_description" formControlName="product_description" placeholder="Product Description">
+  				<div class="error" *ngIf="!productForm.controls['product_description'].valid && (productForm.controls['product_description'].dirty || submitted)">
+  					<div class="label label-danger" *ngIf="productForm.controls['product_description'].hasError('required')">
+  						Description field is required
+  					</div>
+  					
+  			   </div>
+  			</div>
+
+  			
+  			<button type="submit" class="btn btn-success btn-sm pull-left" [disabled]="!documentEditForm.form.valid">Update</button>
+  			<button class="btn btn-danger btn-sm pull-right" routerLink="">Back</button>
+
+  		</form>
+
+  		
+  	</div>
+
+  </div>

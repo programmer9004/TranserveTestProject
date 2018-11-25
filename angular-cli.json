@@ -1,0 +1,81 @@
+{
+  "project": {
+    "version": "1.0.0-beta.28.3",
+    "name": "crud-app"
+  },
+  "apps": [
+    {
+      "root": "src",
+      "outDir": "dist",
+      "assets": [
+        "assets",
+        "favicon.ico"
+      ],
+      "index": "index.html",
+      "main": "main.ts",
+      "polyfills": "polyfills.ts",
+      "test": "test.ts",
+      "tsconfig": "tsconfig.json",
+      "prefix": "app",
+      "styles": [
+        "styles.css",
+         "../src/assets/css/main.css",
+         "../src/assets/bootstrap/vendor/bootstrap/css/bootstrap.min.css",
+         "../src/assets/bootstrap/vendor/metisMenu/metisMenu.min.css",
+         "../src/assets/bootstrap/dist/css/sb-admin-2.css",
+         "../src/assets/bootstrap/vendor/morrisjs/morris.css",
+         "../src/assets/bootstrap/vendor/font-awesome/css/font-awesome.min.css"
+      ],
+      "scripts": [
+         "../src/assets/bootstrap/vendor/jquery/jquery.min.js",
+         "../src/assets/bootstrap/vendor/bootstrap/js/bootstrap.min.js",
+         "../src/assets/bootstrap/vendor/metisMenu/metisMenu.min.js",
+         "../src/assets/bootstrap/vendor/raphael/raphael.min.js",
+         "../src/assets/bootstrap/vendor/morrisjs/morris.min.js",
+         "../src/assets/bootstrap/data/morris-data.js",
+         "../src/assets/bootstrap/dist/js/sb-admin-2.js"
+      ],
+      "environments": {
+        "source": "environments/environment.ts",
+        "dev": "environments/environment.ts",
+        "prod": "environments/environment.prod.ts"
+      }
+    }
+  ],
+  "e2e": {
+    "protractor": {
+      "config": "./protractor.conf.js"
+    }
+  },
+  "lint": [
+    {
+      "files": "src/**/*.ts",
+      "project": "src/tsconfig.json"
+    },
+    {
+      "files": "e2e/**/*.ts",
+      "project": "e2e/tsconfig.json"
+    }
+  ],
+  "test": {
+    "karma": {
+      "config": "./karma.conf.js"
+    }
+  },
+  "defaults": {
+    "styleExt": "css",
+    "prefixInterfaces": false,
+    "inline": {
+      "style": false,
+      "template": false
+    },
+    "spec": {
+      "class": false,
+      "component": true,
+      "directive": true,
+      "module": false,
+      "pipe": true,
+      "service": true
+    }
+  }
+}

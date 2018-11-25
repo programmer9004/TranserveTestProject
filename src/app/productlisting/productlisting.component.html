@@ -1,0 +1,81 @@
+<div class="row">
+  	<div class="col-lg-12">
+  		<h1 class="page-header">{{title}}</h1>
+
+  	
+  	</div>
+  	<!-- /.col-lg-12 -->
+
+  </div>
+ 
+  <div class="row">
+    <div class="alert alert-success" *ngIf="message!=''">{{message}}</div>
+
+ <!-- <ul>
+      <li *ngFor="let item of collection | paginate: { itemsPerPage: 5, currentPage: p }"> {{item.make}} </li>
+    </ul> -->
+      <button class="btn btn-primary btn-sm pull-right" routerLink="/product/new"><i class="fa fa-plus" aria-hidden="true"></i> Add New Product</button>
+      
+      
+               
+<!--     <pagination-controls (pageChange)="p = $event"></pagination-controls> -->
+    <div class="col-sm-12 breadcrumb" style="margin-top: 10px">
+        <div class="col-sm-2">
+          <label>Per Page Records</label>
+        <select  #t (change)="onChange(t.value)" class="form-control">
+        <option *ngFor="let c of dropNums" [value]="c" > {{c}} </option>
+        </select>
+        </div>
+
+        <div class="col-sm-3">
+            <label>Search By Product Name</label>
+          <input type="text" name="search_by_name" (input)="onSearchName($event.target.value)" class="form-control" placeholder="Seach by product name">
+        </div>
+       
+    </div>
+      <div class="col-sm-12" *ngIf="tableLoader==true" align="center">
+       
+        <div class="loader"></div>
+        <b>Please wait while loading table data</b>
+     </div>
+    <div class="col-sm-12" *ngIf="tableLoader==false">
+
+            <table class="table table-striped" [mfData]="products" #mf="mfDataTable" [mfRowsOnPage]="pageNumber">
+          <thead>
+    <tr>
+        <th style="width: 20%">
+            <mfDefaultSorter by="product_name">Name</mfDefaultSorter>
+        </th>
+         <th style="width: 20%">
+            <mfDefaultSorter by="product_price">Price</mfDefaultSorter>
+        </th>
+         <th style="width: 20%">
+            <mfDefaultSorter by="product_description">Description</mfDefaultSorter>
+        </th>
+         <th style="width: 20%">
+             <mfDefaultSorter>Action</mfDefaultSorter>
+        </th>
+
+     
+    </tr>
+    </thead>
+    <tbody>
+    <tr *ngFor="let item of mf.data">
+        <td>{{item.product_name}}</td>
+        <td>{{item.product_price}}</td>
+        <td>{{item.product_description}}</td>
+        <td><a class="btn btn-sm btn-info" [routerLink]="['/product/edit', item.product_id ]">Edit</a></td>
+    </tr>
+    </tbody>
+    <tfoot>
+    <tr>
+        <td colspan="4">
+            <mfBootstrapPaginator></mfBootstrapPaginator> <!--  [rowsOnPageSet]="[2,5]" -->
+        </td>
+    </tr>
+    </tfoot>
+</table>
+    </div>
+   
+
+  </div>

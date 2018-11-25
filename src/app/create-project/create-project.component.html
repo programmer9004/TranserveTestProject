@@ -1,0 +1,97 @@
+ 
+  <div class="row">
+  	<div class="col-lg-12">
+  		<h1 class="page-header">{{title}}</h1>
+  		
+  		
+  	</div>
+  	<!-- /.col-lg-12 -->
+
+  </div>
+
+  <div class="row">
+  	<div class="col-sm-8">
+      <div class="label label-danger" *ngIf="form_err!=''">{{form_err}}</div>
+      <div class="label label-success" *ngIf="form_succ!=''">{{form_succ}}</div>
+      <!-- <div class="label label-warning" *ngIf="(productForm.status=='INVALID') || (uniqueStatus===false)">Please fill in all the product details</div>
+  		<div class="label label-success" *ngIf="(productForm.status=='VALID') || (uniqueStatus===true)">You can now save your product details</div> -->
+
+  		<form [formGroup]="projectForm" (ngSubmit)="save()" novalidate #documentEditForm="ngForm" enctype="multipart/form-data">
+  			<div class="form-group">
+  				<label for="product_name">Project School:</label>
+  				<input type="project" class="form-control" id="project" formControlName="project"  placeholder="Project School">
+  				<div class="error" *ngIf="!projectForm.controls['project'].valid && (projectForm.controls['project'].dirty || submitted)">
+  					<div class="label label-danger" *ngIf="projectForm.controls['project'].hasError('required')">
+  						this field is required
+  					</div>
+  				
+           
+  				</div>
+           
+  			</div>
+  			
+
+  		   	<div class="form-group">
+  				<label for="product_price">Description:</label>
+  				<textarea class="form-control" id="description" formControlName="description" placeholder="Enter description" rows="8"> </textarea>
+  				<div class="error" *ngIf="!projectForm.controls['description'].valid && (projectForm.controls['description'].dirty || submitted)">
+  					<div class="label label-danger" *ngIf="projectForm.controls['description'].hasError('required')">
+  						this field is required
+  					</div>
+  					
+  			   </div>
+  		   </div>
+
+  		   <div class="form-group">
+  				<label for="forms">Select Form(s):</label>
+  				<select class="form-control" formControlName="formsubmitted" multiple>
+  					<option value="">Choose multiple or one form(s)</option>
+  					 <option *ngFor="let item of forms" [value]="item.id">{{item.name}}</option>
+  				</select>
+  				<div class="error" *ngIf="!projectForm.controls['formsubmitted'].valid && (projectForm.controls['formsubmitted'].dirty || submitted)">
+  					<div class="label label-danger" *ngIf="projectForm.controls['formsubmitted'].hasError('required')">
+  						this field is required
+  					</div>
+  					
+  			   </div>
+  		   </div>
+
+
+  		   <div class="form-group">
+  				<label for="forms">Assign User(s):</label>
+  				<select class="form-control" formControlName="users" multiple>
+  					<option value="">Choose multiple or one form(s)</option>
+  					 <option *ngFor="let item of users" [value]="item.id">{{item.first_name}} {{item.last_name}}</option>
+  				</select>
+  				<div class="error" *ngIf="!projectForm.controls['users'].valid && (projectForm.controls['users'].dirty || submitted)">
+  					<div class="label label-danger" *ngIf="projectForm.controls['users'].hasError('required')">
+  						this field is required
+  					</div>
+  					
+  			   </div>
+  		   </div>
+
+
+  		   <div class="form-group">
+  				<label for="forms">Symbol:</label>
+  				<select class="form-control" formControlName="symbol" [(ngModel)]="selectedSymbol">
+  					   <option *ngFor="let item of symbols" [value]="item.value">{{item.label}}</option>
+  				</select>
+  				<div class="error" *ngIf="!projectForm.controls['symbol'].valid && (projectForm.controls['symbol'].dirty || submitted)">
+  					<div class="label label-danger" *ngIf="projectForm.controls['symbol'].hasError('required')">
+  						this field is required
+  					</div>
+  					
+  			   </div>
+  		   </div>
+
+  			
+  			<button type="submit" class="btn btn-success btn-sm pull-left" [disabled]="(!documentEditForm.form.valid)">Create Project</button>
+  			<button class="btn btn-danger btn-sm pull-right" routerLink="">Back</button>
+
+  		</form>
+
+  		
+  	</div>
+
+  </div>

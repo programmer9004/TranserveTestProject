@@ -1,0 +1,48 @@
+<div  [ngClass]="mainLoader === true ? 'highlight' : 'nonecolor'">
+   
+</div>
+  <div class="container">
+        <div class="row">
+            <div class="col-md-4 col-md-offset-4">
+                <div class="login-panel panel panel-default">
+                    <div class="panel-heading">
+                        <h3 class="panel-title">Please Sign In</h3>
+                    </div>
+
+                    <div class="panel-body">
+                       <div class="alert alert-success" *ngIf="message!=''">{{message}}</div>
+                       <div class="alert alert-danger" *ngIf="err_message!=''">{{err_message}}</div>
+                        <form role="form"  (ngSubmit)="authenticate()" [formGroup]="loginForm" novalidate #documentLoginForm="ngForm">
+                            <fieldset>
+                                <div class="form-group">
+                                    <input class="form-control" placeholder="E-mail" name="email" type="email" formControlName="email" autofocus>
+                                 <div class="error" *ngIf="!loginForm.controls['email'].valid && (loginForm.controls['email'].dirty || submitted)">
+  									<div class="label label-danger" *ngIf="loginForm.controls['email'].hasError('pattern')">
+  										Invalid Email
+  									</div>
+  									<div class="label label-danger" *ngIf="loginForm.controls['email'].hasError('required')">
+  										Field is required
+  									</div>
+
+  								</div>
+                                </div>
+                                <div class="form-group">
+                                    <input formControlName="password" class="form-control" placeholder="Password" name="password" type="password" value="">
+                                    	<div class="error" *ngIf="!loginForm.controls['password'].valid && (loginForm.controls['password'].dirty || submitted)">
+  									
+  									<div class="label label-danger" *ngIf="loginForm.controls['password'].hasError('required')">
+  										Field is required
+  									</div>
+
+  								</div>
+                                </div>
+                               
+                                <!-- Change this to a button or input when using this as a form -->
+                              <button type="submit" class="btn btn-lg btn-success btn-block" [disabled]="(!documentLoginForm.form.valid)">Login</button>
+                            </fieldset>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>

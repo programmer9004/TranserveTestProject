@@ -1,0 +1,82 @@
+<div  [ngClass]="mainLoader === true ? 'highlight' : 'nonecolor'">
+   
+</div>
+<div class="container">
+  	<div class="row">
+
+  		<div class="col-md-4 col-md-offset-4">
+  			<div class="login-panel panel panel-default">
+  				<div class="panel-heading">
+  					<h3 class="panel-title">Register</h3>
+  				</div>
+  				<div class="panel-body">
+  					<form role="form" (ngSubmit)="save()" [formGroup]="registrationForm" novalidate #documentRegisterForm="ngForm">
+  						<fieldset>
+  							<div class="form-group">
+  								<input class="form-control" formControlName="email" placeholder="E-mail" name="email" type="email" (input)="emailExists($event.target.value)" autofocus>
+  								<div class="error" *ngIf="!registrationForm.controls['email'].valid && (registrationForm.controls['email'].dirty || submitted)">
+  									<div class="label label-danger" *ngIf="registrationForm.controls['email'].hasError('pattern')">
+  										Invalid Email
+  									</div>
+  									<div class="label label-danger" *ngIf="registrationForm.controls['email'].hasError('required')">
+  										Field is required
+  									</div>
+ 
+  								</div>
+  								<div class="error">
+  									<div class="label label-danger" *ngIf="(registrationForm.controls['email'].valid) && (emailStatus!=true)">
+  										Email already exists
+  									</div>
+  									<div class="label label-info" *ngIf="(registrationForm.controls['email'].valid) && (pendingStatus===true) && (emailStatus==true)">
+  										Please wait... checking if email exist
+  									</div>
+  								</div>
+  							</div>
+  							<div class="form-group">
+  								<input class="form-control" placeholder="Name" name="name" formControlName="name" type="text" autofocus>
+  								<div class="error" *ngIf="!registrationForm.controls['name'].valid && (registrationForm.controls['name'].dirty || submitted)">
+  									
+  									<div class="label label-danger" *ngIf="registrationForm.controls['name'].hasError('required')">
+  										Field is required
+  									</div>
+
+  								</div>
+  							</div>
+  							<div class="form-group">
+  								<input class="form-control" placeholder="Password" formControlName="password" name="password" type="password" value="">
+  								<div class="error" *ngIf="!registrationForm.controls['password'].valid && (registrationForm.controls['password'].dirty || submitted)">
+  									
+  									<div class="label label-danger" *ngIf="registrationForm.controls['password'].hasError('required')">
+  										Field is required
+  									</div>
+
+  								</div>
+  							</div>
+  							<div class="form-group">
+  								<input class="form-control"  placeholder="Confirm Password" formControlName="confirm_password" name="confirm_password" type="password" value="" (input)="getConfirmPassword($event.target.value)">
+  								<div class="error" *ngIf="!registrationForm.controls['confirm_password'].valid && (registrationForm.controls['confirm_password'].dirty || submitted)">
+  									
+  									<div class="label label-danger" *ngIf="registrationForm.controls['confirm_password'].hasError('required')">
+  										Field is required
+  									</div>
+  									
+  									
+
+  								</div>
+
+  								<div class="label label-danger" *ngIf="(registrationForm.controls['confirm_password'].valid) && (passwordMatch==false)">
+  									Passwords did not match
+  								</div>
+
+  							</div>
+
+
+  							<!-- Change this to a button or input when using this as a form -->
+  							<button type="submit" class="btn btn-lg btn-success btn-block" [disabled]="(!documentRegisterForm.form.valid) || (passwordMatch==false)">Register</button>
+  						</fieldset>
+  					</form>
+  				</div>
+  			</div>
+  		</div>
+  	</div>
+  </div>

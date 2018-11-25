@@ -1,0 +1,77 @@
+
+<style type="text/css">
+	/* The heart of the matter */
+.testimonial-group > .row {
+  overflow-x: auto;
+  white-space: nowrap;
+}
+.testimonial-group > .row > .col-xs-4 {
+  display: inline-block;
+  float: none;
+}
+
+/* Decorations */
+.col-xs-4 { padding-bottom: 20px; padding-top: 18px; cursor: pointer}
+
+</style>
+<div class="row">
+	<div class="col-sm-12">
+		<div class="cols-sm-4 pull-left" >
+		<label>Search</label>
+		  <input type="text" name="search_by_name" (input)="onSearchName($event.target.value)" class="form-control" placeholder="Search Project">
+
+	</div>
+
+	<div class="cols-sm-4 pull-right">
+		<a href="" routerLink="/project/new" class="btn btn-sm btn-info" style="margin-top: 10px">Add New Project</a>
+	</div>
+	</div>
+	
+</div>	
+
+
+<div class="row">
+
+
+
+<div class="container testimonial-group">
+  <div class="row text-center">
+    <div class="col-xs-4"  *ngFor="let item of projects" (click)="get_info(item)"><div class="panel panel-primary">
+      <div class="panel-heading">{{item.project}}</div>
+      <div class="panel-body">{{item.description}}</div>
+    </div>
+  </div>
+
+  </div>
+</div>
+
+
+  </div>
+
+
+<div class="row" style="margin-top: 30px">
+	<div class="col-sm-12">
+		<div class="panel panel-success">
+         <div class="panel-heading">Project Details</div>
+         <div class="panel-body">
+         	<table class="table table-bordered">
+			<tr>
+				<th>Project Name</th>
+				<td>{{project}}</td>
+			</tr>
+			<tr>
+				<th>Created At</th>
+				<td>{{created_at}}</td>
+			</tr>
+			<tr>
+				<th>Updated At</th>
+				<td>{{updated_at}}</td>
+			</tr>
+
+
+		</table>
+	</div>
+       </div>
+		
+	</div>
+</div>
