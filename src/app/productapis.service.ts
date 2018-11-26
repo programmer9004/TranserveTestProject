@@ -15,20 +15,20 @@ export class ProductapisService {
   public productSubject = new Subject<any>() //Used to communicate with root component
   public messageSubject = new BehaviorSubject<any>(''); //Used to communicate with all the components
   public errorMessageSubject = new BehaviorSubject<any>(''); //Used to communicate with all the components
-  save_url: string = 'http://localhost/simple_pos/index.php/product/save_product_api';
-  upload_url: string = 'http://localhost/simple_pos/index.php/product/upload_url';
-  authenticate: string = 'http://localhost/simple_pos/index.php/product/authenticate';
-  save_user_url: string = 'http://localhost/simple_pos/index.php/product/save_user_api';
-  check_unique_product: string = 'http://localhost/simple_pos/index.php/product/check_unique_product';
-  check_unique_email: string = 'http://localhost/simple_pos/index.php/product/check_unique_email';
-  update_url: string = 'http://localhost/simple_pos/index.php/product/update_product';
-  fetch_edit_product: string = 'http://localhost/simple_pos/index.php/product/fetch_edit_product';
-  save_prject_url: string = 'http://localhost/simple_pos/index.php/product/save_prject_url';
-      url: string = 'http://localhost/simple_pos/index.php/product/get_products';
-      fetch_projects: string = 'http://localhost/simple_pos/index.php/product/fetch_projects';
-      getUsers: string = 'http://localhost/simple_pos/index.php/product/get_profile_users';
-      getForms: string = 'http://localhost/simple_pos/index.php/product/get_forms';
-      get_search_projects: string = 'http://localhost/simple_pos/index.php/product/get_search_projects';
+  save_url: string = 'http://richardmendes.me/simple_pos/index.php/product/save_product_api';
+  upload_url: string = 'http://richardmendes.me/simple_pos/index.php/product/upload_url';
+  authenticate: string = 'http://richardmendes.me/simple_pos/index.php/product/authenticate';
+  save_user_url: string = 'http://richardmendes.me/simple_pos/index.php/product/save_user_api';
+  check_unique_product: string = 'http://richardmendes.me/simple_pos/index.php/product/check_unique_product';
+  check_unique_email: string = 'http://richardmendes.me/simple_pos/index.php/product/check_unique_email';
+  update_url: string = 'http://richardmendes.me/simple_pos/index.php/product/update_product';
+  fetch_edit_product: string = 'http://richardmendes.me/simple_pos/index.php/product/fetch_edit_product';
+  save_prject_url: string = 'http://richardmendes.me/simple_pos/index.php/product/save_prject_url';
+      url: string = 'http://richardmendes.me/simple_pos/index.php/product/get_products';
+      fetch_projects: string = 'http://richardmendes.me/simple_pos/index.php/product/fetch_projects';
+      getUsers: string = 'http://richardmendes.me/simple_pos/index.php/product/get_profile_users';
+      getForms: string = 'http://richardmendes.me/simple_pos/index.php/product/get_forms';
+      get_search_projects: string = 'http://richardmendes.me/simple_pos/index.php/product/get_search_projects';
 
     theMainLoader=false;
 

@@ -13,14 +13,48 @@
 /* Decorations */
 .col-xs-4 { padding-bottom: 20px; padding-top: 18px; cursor: pointer}
 
+
+
+
+
+.caption div {
+    box-shadow: 0 0 5px #C8C8C8;
+    transition: all 0.3s ease 0s;
+}
+.img-circle {
+    border-radius: 50%;
+}
+.img-circle {
+    border-radius: 0;
+}
+
+.ratio {
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-size: cover;
+
+    height: 0;
+    padding-bottom: 100%;
+    position: relative;
+    width: 100%;
+}
+.img-circle {
+    border-radius: 50%;
+}
+.img-responsive {
+    display: block;
+    height: auto;
+    max-width: 100%;
+}
+
 </style>
 <div class="row">
 	<div class="col-sm-12">
 		<div class="cols-sm-4 pull-left" >
 		<label>Search</label>
 		  <input type="text" name="search_by_name" (input)="onSearchName($event.target.value)" class="form-control" placeholder="Search Project">
-
-	</div>
+  
+	</div>          
 
 	<div class="cols-sm-4 pull-right">
 		<a href="" routerLink="/project/new" class="btn btn-sm btn-info" style="margin-top: 10px">Add New Project</a>
@@ -38,7 +72,21 @@
   <div class="row text-center">
     <div class="col-xs-4"  *ngFor="let item of projects" (click)="get_info(item)"><div class="panel panel-primary">
       <div class="panel-heading">{{item.project}}</div>
-      <div class="panel-body">{{item.description}}</div>
+      <div class="panel-body">
+
+      	     <div class="col-sm-12">
+      	     	<h4>Project Description</h4>
+      	     	{{item.description}}
+      	     </div>
+      	      <div class="col-sm-12">
+      	      <h4>Assigned Users</h4>
+              <div class="col-sm-2" *ngFor="let profil of item.profile">
+
+            <div  class="ratio img-responsive img-circle" [ngStyle]="{background: 'url(' +profil.image_url+ ')'}"></div>
+           
+        </div>
+    </div>
+      </div>
     </div>
   </div>
 
